@@ -65,6 +65,37 @@ function realismAddon_gearbox_overrides.getGearRatioMultiplier(self, superFunc)
 end
 VehicleMotor.getGearRatioMultiplier = Utils.overwrittenFunction(VehicleMotor.getGearRatioMultiplier, realismAddon_gearbox_overrides.getGearRatioMultiplier)
 
+-- show "P" instead of gear when handbrake is used and active on incab displays 
+function realismAddon_gearbox_overrides.getGearToDisplay(self, superFunc, val, val2, val3, val4, val5)
+
+	local value = superFunc(self, val, val2, val3, val4, val5)
+	if realismAddon_gearbox_overrides.checkIsManual(self) then
+		local spec = self.vehicle.spec_realismAddon_gearbox
+		
+		if spec.handbrakeUseME and spec.handbrakeStateME then
+			value = "P"
+		end
+	end
+	return value
+end
+
+VehicleMotor.getGearToDisplay = Utils.overwrittenFunction(VehicleMotor.getGearToDisplay, realismAddon_gearbox_overrides.getGearToDisplay)
+
+-- show "P" instead of gear when handbrake is used and active on lower right vehicle HUD
+function realismAddon_gearbox_overrides.getGearInfoToDisplay(self, superFunc, val)
+
+	local val1, val2, val3, val4, val5, val6, val7, val8, val9, val10 = superFunc(self, val)
+	--print(tostring(val1).." "..tostring(val2).." "..tostring(val3).." "..tostring(val4).." "..tostring(val5).." "..tostring(val6).." "..tostring(val7).." "..tostring(val8).." "..tostring(val9).." "..tostring(val10))
+	local spec_ragb = self.spec_realismAddon_gearbox
+	
+	if spec_ragb.handbrakeUseME and	spec_ragb.handbrakeStateME then
+		val1 = "P"
+	end
+
+	return val1, val2, val3, val4, val5, val6, val7, val8, val9, val10
+end
+Motorized.getGearInfoToDisplay = Utils.overwrittenFunction(Motorized.getGearInfoToDisplay, realismAddon_gearbox_overrides.getGearInfoToDisplay)
+
 
 -- better clutch feel 
 function realismAddon_gearbox_overrides.calculateClutchRatio(self, motor)
@@ -195,7 +226,7 @@ function realismAddon_gearbox_overrides.update(self, superFunc, dt)
 			if g_physicsDtNonInterpolated > 0 and not getIsSleeping(vehicle.rootNode) then
 				self.lastMotorAvailableTorque, self.lastMotorAppliedTorque, self.lastMotorExternalTorque = getMotorTorque(vehicle.spec_motorized.motorizedNode)
 			end
-			
+
 
 			local motorRotAcceleration = ((self.motorRotSpeed - lastMotorRotSpeed)+0.00001) / ((g_physicsDtNonInterpolated * 0.001)+0.00001) 	-- FS25 Fix add 0.00001 to avoid division by 0 error 
 			self.motorRotAcceleration = motorRotAcceleration
@@ -210,7 +241,8 @@ function realismAddon_gearbox_overrides.update(self, superFunc, dt)
 			
 			self.differentialRotAccelerationSmoothed = 0.95 * self.differentialRotAccelerationSmoothed + 0.05 * diffRotAcc	
 		
-			
+		
+
 			self.motorExternalTorque = self.lastMotorExternalTorque
 			self.motorAppliedTorque = self.lastMotorAppliedTorque
 			self.motorAvailableTorque = self.lastMotorAvailableTorque

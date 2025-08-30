@@ -12,7 +12,6 @@ function realismAddon_gearbox_spec.registerEventListeners(vehicleType)
 	SpecializationUtil.registerEventListener(vehicleType, "onLoad", realismAddon_gearbox_spec);
 	SpecializationUtil.registerEventListener(vehicleType, "onUpdate", realismAddon_gearbox_spec);
 
-	SpecializationUtil.registerEventListener(vehicleType, "onDraw", realismAddon_gearbox_spec);	
 	--SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", realismAddon_gearbox_inputs);
 end
 
@@ -21,23 +20,6 @@ function realismAddon_gearbox_spec.registerFunctions(vehicleType)
 	SpecializationUtil.registerFunction(vehicleType, "processHandbrakeInput", realismAddon_gearbox_spec.processHandbrakeInput)	
 	SpecializationUtil.registerFunction(vehicleType, "getMotorBlowOffValveStateRAGB", realismAddon_gearbox_spec.getMotorBlowOffValveStateRAGB)
 	SpecializationUtil.registerFunction(vehicleType, "getBoostPressureRAGB", realismAddon_gearbox_spec.getBoostPressureRAGB)
-end
-
-function realismAddon_gearbox_spec:onDraw()
-	
-	local spec = self.spec_realismAddon_gearbox
-	-- check if transmission is manual 
-	if realismAddon_gearbox_overrides.checkIsManual(self.spec_motorized.motor) and spec.handbrakeUseME then	
-		if spec.handbrakeStateME then
-			setTextColor(0.6, 0, 0, 1)
-			renderText(0.91, 0.033, 0.02, "P")
-		else
-			setTextColor(0.501, 0.835, 0.094, 1)		
-			renderText(0.91, 0.033, 0.02, "P")
-		end
-
-		setTextColor(1, 1, 1, 1)	
-	end
 end
 
 
@@ -148,11 +130,11 @@ function realismAddon_gearbox_spec:onLoad(savegame)
         end
 	
 	end   
-
-
+	
 	-- handbrake
-	spec.handbrakeStateME = true
+	spec.handbrakeStateME = false
 	spec.handbrakeUseME = true
+	
 
 
 end
@@ -233,6 +215,8 @@ function realismAddon_gearbox_spec:onUpdate(dt)
 				end
 			
 			end
+			
+				
 		end
 			
 	end

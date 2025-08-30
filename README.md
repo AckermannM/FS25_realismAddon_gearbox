@@ -42,6 +42,9 @@ As EnhancedVehicle is now released the EV parking brake should work again and th
 
 # Changelog in FS25:
 
+###### V 0.9.0.3
+- added "P" for parking brake to gear hud instead of additional P to simplify hud
+
 ###### V 0.9.0.2
 - Fixed FPS Axis not working 
 
