@@ -49,6 +49,13 @@
             <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(2)#xRot" value="6"/>	
             <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(3)#xRot" value="6"/>	
             <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(4)#xRot" value="6"/>	
+
+            <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(9)#group" value="0" />	
+            <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(10)#group" value="0"/>	
+            <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(9)#secondGroup" value="1" />	
+            <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(10)#secondGroup" value="2"/>	
+            <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(9)#xRot" value="-4" />	
+            <attribute path="vehicle.motorized.gearLevers.gearLever(2).state(10)#xRot" value="6"/>	
          </attributes>
     </editFile>
 
