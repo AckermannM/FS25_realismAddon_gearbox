@@ -41,6 +41,12 @@ Download FS25_realismAddon_gearbox.zip from the releases section and put it into
 
 # Changelog in FS25
 
+###### V 0.9.0.4
+
+- added animations of secondGroup Levers
+- added possibility for modders to add `motorized > gearLevers > gearLever(n) > state(n) #secondGroup` property to trigger animations based on selected second group
+- adjusted xml overrides to add secondGroup animations to John Deere 3650
+
 ###### V 0.9.0.3
 
 - added "P" for parking brake to gear hud instead of additional P to simplify hud
