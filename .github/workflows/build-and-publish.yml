@@ -16,7 +16,7 @@ jobs:
         with:
           type: "zip"
           filename: "FS25_realismAddon_gearbox.zip"
-          exlusions: "*.git* *README*"
+          exclusions: "*.git* *README*"
 
       - name: Get Version
         id: get_version
