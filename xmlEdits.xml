@@ -31,7 +31,7 @@
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.forwardGear(5)#reverseName" value="-3"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.forwardGear(7)#reverseName" value="-4"/>				
 			
-            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powershift" value="true"/>
+            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powerShift" value="true"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#ratio" value="0.8162"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#name" value="L"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(1)#ratio" value="1.0"/>
@@ -62,7 +62,7 @@
 
 	<editFile xmlFilename="data/vehicles/zetor/proximaHS120/proximaHS120.xml">
         <attributes>
-            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powershift" value="false"/>
+            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powerShift" value="false"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#ratio" value="0.3579"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#name" value="L"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(1)#ratio" value="1.0"/>
@@ -99,7 +99,7 @@
 
 	<editFile xmlFilename="data/vehicles/zetor/forterraHSX140/forterraHSX140.xml">
         <attributes>
-            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powershift" value="false"/>
+            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powerShift" value="false"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#ratio" value="0.3591"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#name" value="L"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(1)#ratio" value="1.0"/>
@@ -158,7 +158,7 @@
 	
 	<editFile xmlFilename="data/vehicles/zetor/crystal/crystal.xml">
         <attributes>
-            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powershift" value="false"/>
+            <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet#powerShift" value="false"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#ratio" value="0.3591"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(0)#name" value="L"/>
             <attribute path="vehicle.motorized.motorConfigurations.motorConfiguration(0).transmission.realismAddon_gearbox.groupsSecondSet.group(1)#ratio" value="1.0"/>
