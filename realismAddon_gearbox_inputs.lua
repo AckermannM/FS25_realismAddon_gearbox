@@ -23,14 +23,20 @@ function realismAddon_gearbox_inputs.onRegisterActionEvents(self, isActiveForInp
 			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_HANDTHROTTLE_AXIS", "HANDTHROTTLE_INPUT")
 			
 			-- gear shift via axis 
-			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_GEARSHIFT_AXIS", "RAGB_GEARSHIFT_AXIS");	
+			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_GEARSHIFT_AXIS", "RAGB_GEARSHIFT_AXIS")	
 
 			-- second group set
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_UP", "GROUPSECOND_INPUT")			
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_DOWN", "GROUPSECOND_INPUT")	
 			
 			-- handbrake
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_HANDBRAKE", "HANDBRAKE_INPUT")					
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_HANDBRAKE", "HANDBRAKE_INPUT")			
+
+			-- group 5 - 8 individual shifting since Giants only allows 1-4
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_5", "GROUP58_MANUAL_INPUT")	
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_6", "GROUP58_MANUAL_INPUT")	
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_7", "GROUP58_MANUAL_INPUT")	
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_8", "GROUP58_MANUAL_INPUT")	
 		
 		end
 
@@ -45,7 +51,7 @@ function realismAddon_gearbox_inputs:addRealismAddonActionEvent(type, inputActio
 	
 
 
-	local _, actionEventId = nil;
+	local _, actionEventId = nil
 	if type == "BUTTON_SINGLE_ACTION" then
 		_ , actionEventId = self:addActionEvent(spec.actionEvents, InputAction[inputAction], self, realismAddon_gearbox_inputs[func], false, true, false, true)
 	elseif type == "BUTTON_DOUBLE_ACTION" then
@@ -83,8 +89,8 @@ function realismAddon_gearbox_inputs:HANDTHROTTLE_INPUT(actionName, inputValue)
 		spec.handThrottleUp = true 
 	elseif actionName == "RAGB_HANDTHROTTLE_DOWN" and inputValue == 1 then
 		spec.handThrottleDown = true			
-	end;
-end;
+	end
+end
 
 -- shifting axis for fps transmissions
 function realismAddon_gearbox_inputs:RAGB_GEARSHIFT_AXIS(actionName, inputValue)
@@ -137,19 +143,36 @@ function realismAddon_gearbox_inputs:HANDBRAKE_INPUT(actionName, inputValue)
 		self:processHandbrakeInput(not spec_ragb.handbrakeStateME)
 	end
 end
-
 -- END
 
+
+-- group 5 to 8 manual shifting 
+function realismAddon_gearbox_inputs:GROUP58_MANUAL_INPUT(actionName, inputValue)
+	
+	local wantedGearGroupIndex = 5
+	if actionName == "RAGB_SHIFT_GROUP_6" then
+		wantedGearGroupIndex = 6
+	elseif actionName == "RAGB_SHIFT_GROUP_7" then
+		wantedGearGroupIndex = 7
+	elseif actionName == "RAGB_SHIFT_GROUP_8" then
+		wantedGearGroupIndex = 8
+	end
+
+	local motor = self.spec_motorized.motor
+	if motor.gearGroups[wantedGearGroupIndex] ~= nil then
+		MotorGearShiftEvent.sendToServer(self, MotorGearShiftEvent.TYPE_SELECT_GROUP, inputValue == 1 and wantedGearGroupIndex or 0)
+	end
+end
 
 -- ACTUAL SPEC 
 
 function realismAddon_gearbox_inputs.registerEventListeners(vehicleType)
-	SpecializationUtil.registerEventListener(vehicleType, "onLoad", realismAddon_gearbox_inputs);
-	SpecializationUtil.registerEventListener(vehicleType, "onUpdate", realismAddon_gearbox_inputs);
-	SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", realismAddon_gearbox_inputs);
-	SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", realismAddon_gearbox_inputs);
+	SpecializationUtil.registerEventListener(vehicleType, "onLoad", realismAddon_gearbox_inputs)
+	SpecializationUtil.registerEventListener(vehicleType, "onUpdate", realismAddon_gearbox_inputs)
+	SpecializationUtil.registerEventListener(vehicleType, "onWriteUpdateStream", realismAddon_gearbox_inputs)
+	SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", realismAddon_gearbox_inputs)
 	
-	SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", realismAddon_gearbox_inputs);
+	SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", realismAddon_gearbox_inputs)
 	
 end
 
@@ -183,7 +206,7 @@ function realismAddon_gearbox_inputs:onLoad(savegame)
 	spec.synchHandThrottleDirtyFlag = self:getNextDirtyFlag()	
 	
 	-- gear shift axis values 
-	spec.gearAxisPosition = 0;	
+	spec.gearAxisPosition = 0	
 	
 
 
@@ -225,7 +248,7 @@ end
 
 
 function realismAddon_gearbox_inputs:onWriteUpdateStream(streamId, connection, dirtyMask)
-	local spec = self.spec_realismAddon_gearbox_inputs;
+	local spec = self.spec_realismAddon_gearbox_inputs
 
 	if connection:getIsServer() and spec.allManualActive then 
 		-- hand throttle
@@ -237,7 +260,7 @@ function realismAddon_gearbox_inputs:onWriteUpdateStream(streamId, connection, d
 end
 
 function realismAddon_gearbox_inputs:onReadUpdateStream(streamId, timestamp, connection)
-	local spec = self.spec_realismAddon_gearbox_inputs;
+	local spec = self.spec_realismAddon_gearbox_inputs
 	
 	if not connection:getIsServer() and spec.allManualActive then 
 		-- hand throttle
@@ -246,7 +269,7 @@ function realismAddon_gearbox_inputs:onReadUpdateStream(streamId, timestamp, con
 		end		
 	end
 	
-end;
+end
 
 
 

@@ -20,20 +20,20 @@ function realismAddon_gearbox_register:register(name)
     
 		for _, vehicle in pairs(g_vehicleTypeManager:getTypes()) do
 			
-			local motorized = false;
-			local realismAddon_gearbox_inputs = false;
-			local realismAddon_gearbox_spec = false;
+			local motorized = false
+			local realismAddon_gearbox_inputs = false
+			local realismAddon_gearbox_spec = false
 						
 			for _, spec in pairs(vehicle.specializationNames) do
 			
 				if spec == "motorized" then -- check for motorized, only insert into motorized
-					motorized = true;
+					motorized = true
 				end
 				if spec == "realismAddon_gearbox_inputs" then -- don't insert if already inserted
-					realismAddon_gearbox_inputs = true;
+					realismAddon_gearbox_inputs = true
 				end
 				if spec == "realismAddon_gearbox_spec" then -- don't insert if already inserted
-					realismAddon_gearbox_spec = true;
+					realismAddon_gearbox_spec = true
 				end
 
 				
