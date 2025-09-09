@@ -18,28 +18,23 @@ function realismAddon_gearbox_inputs.onRegisterActionEvents(self, isActiveForInp
 			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_HANDTHROTTLE_UP", "HANDTHROTTLE_INPUT")
 			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_HANDTHROTTLE_DOWN", "HANDTHROTTLE_INPUT")
 			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_HANDTHROTTLE_AXIS", "HANDTHROTTLE_INPUT")
-			
-			-- gear shift via axis 
-			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_GEARSHIFT_AXIS", "RAGB_GEARSHIFT_AXIS")	
+
+			-- gear shift via axis
+			self:addRealismAddonActionEvent("PRESSED_OR_AXIS", "RAGB_GEARSHIFT_AXIS", "RAGB_GEARSHIFT_AXIS")
 
 			-- second group set
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_UP", "GROUPSECOND_INPUT")
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_DOWN", "GROUPSECOND_INPUT")
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_TWO_OR_ONE", "GROUPSECOND_INPUT")
-			
-			-- handbrake
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_HANDBRAKE", "HANDBRAKE_INPUT")			
-
-			-- group 5 - 8 individual shifting since Giants only allows 1-4
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_5", "GROUP58_MANUAL_INPUT")	
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_6", "GROUP58_MANUAL_INPUT")	
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_7", "GROUP58_MANUAL_INPUT")	
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_8", "GROUP58_MANUAL_INPUT")	
-		
-		end
+			self:addRealismAddonActionEvent("BUTTON_DOUBLE_ACTION", "RAGB_GROUPSECOND_TWO_OR_ONE", "GROUPSECOND_INPUT")
 
 			-- handbrake
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_HANDBRAKE", "HANDBRAKE_INPUT")
+
+			-- group 5 - 8 individual shifting since Giants only allows 1-4
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_5", "GROUP58_MANUAL_INPUT")
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_6", "GROUP58_MANUAL_INPUT")
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_7", "GROUP58_MANUAL_INPUT")
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_SHIFT_GROUP_8", "GROUP58_MANUAL_INPUT")
 		end
 	end
 end
@@ -168,10 +163,8 @@ function realismAddon_gearbox_inputs:HANDBRAKE_INPUT(actionName, inputValue)
 end
 -- END
 
-
--- group 5 to 8 manual shifting 
+-- group 5 to 8 manual shifting
 function realismAddon_gearbox_inputs:GROUP58_MANUAL_INPUT(actionName, inputValue)
-	
 	local wantedGearGroupIndex = 5
 	if actionName == "RAGB_SHIFT_GROUP_6" then
 		wantedGearGroupIndex = 6
@@ -183,11 +176,15 @@ function realismAddon_gearbox_inputs:GROUP58_MANUAL_INPUT(actionName, inputValue
 
 	local motor = self.spec_motorized.motor
 	if motor.gearGroups[wantedGearGroupIndex] ~= nil then
-		MotorGearShiftEvent.sendToServer(self, MotorGearShiftEvent.TYPE_SELECT_GROUP, inputValue == 1 and wantedGearGroupIndex or 0)
+		MotorGearShiftEvent.sendToServer(
+			self,
+			MotorGearShiftEvent.TYPE_SELECT_GROUP,
+			inputValue == 1 and wantedGearGroupIndex or 0
+		)
 	end
 end
 
--- ACTUAL SPEC 
+-- ACTUAL SPEC
 
 function realismAddon_gearbox_inputs.registerEventListeners(vehicleType)
 	SpecializationUtil.registerEventListener(vehicleType, "onLoad", realismAddon_gearbox_inputs)
