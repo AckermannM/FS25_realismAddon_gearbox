@@ -326,9 +326,6 @@ function realismAddon_gearbox_overrides.update(self, superFunc, dt)
 
 			-- clamp so no negative value
 			clampedMotorRpm = math.max(clampedMotorRpm, 0)
-
-			-- clamp so no negative value
-			clampedMotorRpm = math.max(clampedMotorRpm, 0)
 		end
 
 		-- finally set the new RPM values
