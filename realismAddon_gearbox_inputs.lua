@@ -25,7 +25,7 @@ function realismAddon_gearbox_inputs.onRegisterActionEvents(self, isActiveForInp
 			-- second group set
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_UP", "GROUPSECOND_INPUT")
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_DOWN", "GROUPSECOND_INPUT")
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_RANGESPLIT_H_OR_L", "GROUPSECOND_INPUT")
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_TWO_OR_ONE", "GROUPSECOND_INPUT")
 			
 			-- handbrake
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_HANDBRAKE", "HANDBRAKE_INPUT")			

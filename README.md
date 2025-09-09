@@ -19,7 +19,6 @@ So for now the features are final I think - at least for a first final version. 
 
 Download FS25_realismAddon_gearbox.zip from the releases section and put it into your mods folder.
 
-
 # Feature List FS25
 
 - removes all unnatural/automatic braking, only adding back Engine Braking depending on gearRatio
@@ -32,19 +31,20 @@ Download FS25_realismAddon_gearbox.zip from the releases section and put it into
 - remove automatic full brake when clutching in reverse bug
 - added support for axis shifting for FPS transmissions
 - added handbrake
-- added support for second Group-Set so the usual Gears, Groups and second Group can be simulated. (for example Gears, R, L, H Group and L / H Powershift) Inputs need to be configured, nothing set by default
-- added optional Inputs for group5 to group8 since Giants default only allows 1-4
-
 - added support for second Group-Set so the usual Gears, Groups and second Group can be simulated. (for example Gears, R, L, H Group and L / H Powershift) Inputs need to be configured, nothing set by default, optionally a rangesplitter binding can be set, where the button press switches to H and release to L again
+- added optional Inputs for group5 to group8 since Giants default only allows 1-4
 
 # Changelog in FS25
 
-###### V 0.9.0.5
-- fixed automatic transmissions not working
-- added automatic clutch opening when stopped on automatic transmissions so they can be used without clutch still 
-- added optional Inputs for group5 to group8 since Giants default only allows 1-4
+###### V 0.9.0.6
 
 - added binding for secondGroup gears 2 or 1, to support range splitter switches on SKRS style shiftknobs
+
+###### V 0.9.0.5
+
+- fixed automatic transmissions not working
+- added automatic clutch opening when stopped on automatic transmissions so they can be used without clutch still
+- added optional Inputs for group5 to group8 since Giants default only allows 1-4
 
 ###### V 0.9.0.4
 
@@ -72,14 +72,12 @@ Download FS25_realismAddon_gearbox.zip from the releases section and put it into
 
 - Initial Github Release: For a full Feature list look at the Feature List above
 
-
 # Changes between FS22 and FS25 conversion
 
 - added parkbrake/handbrake function. Since at the time of converting there were no other mods with this feature it was neccessary to add it.
   As EnhancedVehicle is now released the EV parking brake should work again and the REA-GB parking brake disable itself. If you don't use EV you have to set the Key Binds for the REA GB Parking Brake
 - added XML Support to change basegame Vehicle Gearbox Settings (currently inclueded are John Deere 3650, Zetor Proxima 120HD, Zetor Forterra HSX140 and Zetor Crystal, more will be added later)
 - fixed MP synchronization where Gears shifted with a Gear Lever were only synchronized up to Gear 7 making all Vehicles with H/L Gears in one impossible to play
-
 
 # Changelog in FS22
 
