@@ -35,6 +35,7 @@ Download FS25_realismAddon_gearbox.zip from the releases section and put it into
 - added support for second Group-Set so the usual Gears, Groups and second Group can be simulated. (for example Gears, R, L, H Group and L / H Powershift) Inputs need to be configured, nothing set by default
 - added optional Inputs for group5 to group8 since Giants default only allows 1-4
 
+- added support for second Group-Set so the usual Gears, Groups and second Group can be simulated. (for example Gears, R, L, H Group and L / H Powershift) Inputs need to be configured, nothing set by default, optionally a rangesplitter binding can be set, where the button press switches to H and release to L again
 
 # Changelog in FS25
 
@@ -42,6 +43,8 @@ Download FS25_realismAddon_gearbox.zip from the releases section and put it into
 - fixed automatic transmissions not working
 - added automatic clutch opening when stopped on automatic transmissions so they can be used without clutch still 
 - added optional Inputs for group5 to group8 since Giants default only allows 1-4
+
+- added binding for secondGroup gears 2 or 1, to support range splitter switches on SKRS style shiftknobs
 
 ###### V 0.9.0.4
 
