@@ -97,6 +97,8 @@ Motorized.getGearInfoToDisplay =
 
 -- better clutch feel
 function realismAddon_gearbox_overrides.calculateClutchRatio(self, motor)
+	local spec = self.spec_realismAddon_gearbox
+
 	-- the end of this function will determine the actual gear ratio
 	local actualGearRatio = 0
 
