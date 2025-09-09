@@ -67,7 +67,7 @@
 		<actionBinding action="RAGB_GROUPSECOND_DOWN">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
 		</actionBinding>
-		<actionBinding action="RAGB_GROUPSECOND_RANGESPLIT_H_OR_L">
+		<actionBinding action="RAGB_GROUPSECOND_TWO_OR_ONE">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
 		</actionBinding>
 
@@ -98,6 +98,7 @@
 
 		<action name="RAGB_GROUPSECOND_UP" />
 		<action name="RAGB_GROUPSECOND_DOWN" />
+		<action name="RAGB_GROUPSECOND_TWO_OR_ONE" />
 
 		<action name="RAGB_HANDBRAKE" />	
 		
