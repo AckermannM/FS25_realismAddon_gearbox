@@ -27,7 +27,8 @@ function realismAddon_gearbox_inputs.onRegisterActionEvents(self, isActiveForInp
 
 			-- second group set
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_UP", "GROUPSECOND_INPUT")			
-			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_DOWN", "GROUPSECOND_INPUT")	
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_DOWN", "GROUPSECOND_INPUT")
+			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_GROUPSECOND_RANGESPLIT_H_OR_L", "GROUPSECOND_INPUT")
 			
 			-- handbrake
 			self:addRealismAddonActionEvent("BUTTON_SINGLE_ACTION", "RAGB_HANDBRAKE", "HANDBRAKE_INPUT")			
@@ -117,16 +118,23 @@ end
 function realismAddon_gearbox_inputs:GROUPSECOND_INPUT(actionName, inputValue)
 
 	local spec_ragb = self.spec_realismAddon_gearbox
-	
-	if spec_ragb.groupsSecondSet ~= nil then	
-	
+
+	if spec_ragb.groupsSecondSet ~= nil then
 		local wantedGroup = spec_ragb.groupsSecondSet.currentGroup
+
 		if actionName == "RAGB_GROUPSECOND_UP" then
 			wantedGroup = math.min(spec_ragb.groupsSecondSet.currentGroup + 1, #spec_ragb.groupsSecondSet.groups)
 		elseif actionName == "RAGB_GROUPSECOND_DOWN" then
 			wantedGroup = math.max(spec_ragb.groupsSecondSet.currentGroup - 1, 1)
+		elseif actionName == "RAGB_GROUPSECOND_RANGESPLIT_H_OR_L" and #spec_ragb.groupsSecondSet.groups == 2 then
+			-- If button pressed (inputValue == 1), switch to H (group 2); if released (inputValue == 0), switch to L (group 1)
+			if inputValue == 1 then
+				wantedGroup = 2
+			else
+				wantedGroup = 1
+			end
 		end
-		
+
 		if wantedGroup ~= spec_ragb.groupsSecondSet.currentGroup then
 			self:processSecondGroupSetInputs(wantedGroup)
 		end

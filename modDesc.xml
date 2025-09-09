@@ -5,28 +5,28 @@
     <title>
         <de>RealismAddon: Gearbox</de>
 		<en>RealismAddon: Gearbox</en>
-    </title>
-    <description>
-        <de>
+	</title>
+	<description>
+		<de>
 <![CDATA[RealismAddon: Gearbox]]>
         </de>
-	<en>
+		<en>
 <![CDATA[RealismAddon: Gearbox]]>
 	</en>
-    </description>
+	</description>
 
 	<iconFilename>store.dds</iconFilename>
 
-	
-    <multiplayer supported="true"/>
-    <extraSourceFiles>
-	
-        <sourceFile filename="realismAddon_gearbox_overrides.lua"/>
-		
-        <sourceFile filename="realismAddon_gearbox_register.lua"/>
-		
-    </extraSourceFiles>
-	
+
+	<multiplayer supported="true" />
+	<extraSourceFiles>
+
+		<sourceFile filename="realismAddon_gearbox_overrides.lua" />
+
+		<sourceFile filename="realismAddon_gearbox_register.lua" />
+
+	</extraSourceFiles>
+
 	<l10n>
 		<text name="input_RAGB_HANDTHROTTLE_UP"><de>Handgas erhöhen</de><en>hand throttle up</en></text>
 		<text name="input_RAGB_HANDTHROTTLE_DOWN"><de>Handgas verringern</de><en>hand throttle down</en></text>
@@ -45,7 +45,7 @@
 		<text name="input_RAGB_SHIFT_GROUP_8"><de>8. Gruppe schalten</de><en>Gear group 8</en></text>
 
 	</l10n>
-	
+
 	<inputBinding>
 		<actionBinding action="RAGB_HANDTHROTTLE_UP">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
@@ -55,18 +55,21 @@
 		</actionBinding>
 		<actionBinding action="RAGB_HANDTHROTTLE_AXIS">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
-		</actionBinding>	
-		
+		</actionBinding>
+
 		<actionBinding action="RAGB_GEARSHIFT_AXIS">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
 		</actionBinding>
 
 		<actionBinding action="RAGB_GROUPSECOND_UP">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
-		</actionBinding>	
+		</actionBinding>
 		<actionBinding action="RAGB_GROUPSECOND_DOWN">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
-		</actionBinding>		
+		</actionBinding>
+		<actionBinding action="RAGB_GROUPSECOND_RANGESPLIT_H_OR_L">
+			<binding device="KB_MOUSE_DEFAULT" input="" />
+		</actionBinding>
 
 		<actionBinding action="RAGB_HANDBRAKE">
 			<binding device="KB_MOUSE_DEFAULT" input="" />
@@ -85,14 +88,14 @@
 			<binding device="KB_MOUSE_DEFAULT" input="" />
 		</actionBinding>		
 	</inputBinding>
-	
+
 	<actions>
 		<action name="RAGB_HANDTHROTTLE_AXIS" />
 		<action name="RAGB_HANDTHROTTLE_DOWN" />
 		<action name="RAGB_HANDTHROTTLE_UP" />
-		
+
 		<action name="RAGB_GEARSHIFT_AXIS" />
-		
+
 		<action name="RAGB_GROUPSECOND_UP" />
 		<action name="RAGB_GROUPSECOND_DOWN" />
 
