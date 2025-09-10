@@ -39,6 +39,7 @@ Download FS25_realismAddon_gearbox.zip from the releases section and put it into
 ###### V 0.9.0.6
 
 - added binding for secondGroup gears 2 or 1, to support range splitter switches on SKRS style shiftknobs
+- fix MP sync issue, where handthrottle is set to around 50% when entering vehicles and coupling or decoupling attachments
 
 ###### V 0.9.0.5
 

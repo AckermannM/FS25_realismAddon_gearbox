@@ -193,6 +193,10 @@ function realismAddon_gearbox_inputs.registerEventListeners(vehicleType)
 	SpecializationUtil.registerEventListener(vehicleType, "onReadUpdateStream", realismAddon_gearbox_inputs)
 
 	SpecializationUtil.registerEventListener(vehicleType, "onRegisterActionEvents", realismAddon_gearbox_inputs)
+
+	-- Listen for attach/detach to force sync
+	SpecializationUtil.registerEventListener(vehicleType, "onPostAttach", realismAddon_gearbox_inputs)
+	SpecializationUtil.registerEventListener(vehicleType, "onPreDetach", realismAddon_gearbox_inputs)
 end
 
 function realismAddon_gearbox_inputs.registerFunctions(vehicleType) end
@@ -219,6 +223,9 @@ function realismAddon_gearbox_inputs:onLoad(savegame)
 	spec.handThrottleUp = false
 
 	spec.synchHandThrottleDirtyFlag = self:getNextDirtyFlag()
+
+	-- Force sync after load
+	self:raiseDirtyFlags(spec.synchHandThrottleDirtyFlag)
 
 	-- gear shift axis values
 	spec.gearAxisPosition = 0
@@ -306,3 +313,17 @@ MotorGearShiftEvent.writeStream = Utils.overwrittenFunction(
 	MotorGearShiftEvent.writeStream,
 	realismAddon_gearbox_inputs.MotorGearShiftEvent_writeStream
 )
+
+function realismAddon_gearbox_inputs:onPostAttach(attacherVehicle, inputJointDescIndex, jointDescIndex)
+	local spec = self.spec_realismAddon_gearbox_inputs
+	if spec and spec.synchHandThrottleDirtyFlag then
+		self:raiseDirtyFlags(spec.synchHandThrottleDirtyFlag)
+	end
+end
+
+function realismAddon_gearbox_inputs:onPreDetach(attacherVehicle, implement)
+	local spec = self.spec_realismAddon_gearbox_inputs
+	if spec and spec.synchHandThrottleDirtyFlag then
+		self:raiseDirtyFlags(spec.synchHandThrottleDirtyFlag)
+	end
+end
